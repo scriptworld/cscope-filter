@@ -23,6 +23,7 @@ make_filtering() {
 	awk '/\.o/ {print $2}' cscope_filtered.log |\
 		sed -e "s:^:$CUR_PATH\/:" |\
 		sed -e 's/\.o/\.c/g' > cscope_filtered.files
+	find $CUR_PATH \( -name '*.h' -o -name '*.s' -o -name '*.S' -o -name '*.dts' -o -name '*.dtsi' \) -print >> cscope_filtered.files
 }
 
 make_cscope() {
